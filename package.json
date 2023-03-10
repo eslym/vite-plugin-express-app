@@ -7,6 +7,9 @@
     "author": "0nepeop1e",
     "license": "MIT",
     "private": false,
+    "repository": {
+        "url": "https://github.com/eslym/vite-plugin-express-app"
+    },
     "scripts": {
         "build": "tsc",
         "format": "prettier . --write"
