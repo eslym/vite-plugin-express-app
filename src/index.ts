@@ -26,6 +26,7 @@ export function viteExpressApp(
         configureServer(server: ViteDevServer) {
             if (server.httpServer) {
                 server.httpServer.on("listening", () => {
+                    app.set("is vite", true);
                     app.emit("listening", server.httpServer);
                 });
                 if (wsServer) {
@@ -46,9 +47,9 @@ export function viteExpressApp(
                 }
             }
             return () => {
-                server.middlewares.use((req, res) => {
-                    app(req, res);
-                });
+                server.middlewares.use(
+                    (app as any as { handle: Function }).handle.bind(app)
+                );
             };
         },
     };
