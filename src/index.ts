@@ -47,9 +47,14 @@ export function viteExpressApp(
                 }
             }
             return () => {
-                server.middlewares.use(
-                    (app as any as { handle: Function }).handle.bind(app)
-                );
+                server.middlewares.use((req, res, next) => {
+                    const _rewrite = req.url;
+                    req.url = req.originalUrl;
+                    app(req as any, res as any, (err) => {
+                        req.url = _rewrite;
+                        next(err);
+                    });
+                });
             };
         },
     };

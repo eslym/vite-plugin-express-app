@@ -1,7 +1,7 @@
 {
     "name": "@eslym/vite-plugin-express-app",
     "type": "module",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Express App in Vite",
     "main": "dist/index.js",
     "author": "0nepeop1e",
